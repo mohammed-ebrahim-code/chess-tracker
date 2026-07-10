@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block title %}Edit Game{% endblock %}
+{% block main %}
+    <div class ="card2">
+        <h3 class="center-text-head">
+            Edit game
+        </h3>
+        
+            <form action="/edit/{{ game_info[0].id }}" method="post">
+        <table>
+            <thead>
+                <tr >
+                    <th >Date</th>
+                    <th >Color</th>
+                    <th >Result</th>
+                    <th >Opening</th>
+                    <th >Opponent Rating</th>
+                    <th >Your Rating</th>
+                    <th >Update</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for game in game_info %}
+                {% if game.id == id%}
+                    <tr>
+                        <td ><input class = "input" type="date" autocomplete="off" name="date" value="{{ game.date }}"></td>
+                        {% if game.color == "white"%}
+                            <td ><select name="color" class = "input"> <option value="white" selected>White</option>  <option value="black">black </option> </select></td>
+                        {% else %}
+                            <td ><select name="color" class = "input"> <option value="white" >White</option>  <option value="black" selected>black </option> </select></td>
+                        {% endif %}
+                        {% if game.result == "win"%}
+                            <td ><select name="result" class = "input"> <option value="win" selected>win</option>  <option value="draw">draw </option> <option value="loss">loss </option> </select></td>
+                        {% elif game.result == "draw" %}
+                            <td ><select name="result" class = "input"> <option value="win" >win</option>  <option value="draw"selected>draw </option> <option value="loss">loss </option> </select></td>
+                        {% else %}
+                            <td ><select name="result" class = "input"> <option value="win" >win</option>  <option value="draw">draw </option> <option value="loss"selected>loss </option> </select></td>
+                        {% endif %}
+                        <td ><input class = "input" type="text" autocomplete="off" placeholder="Opening Name" name="opening" value="{{ game.opening }}"></td>
+                        <td><input class = "input" type="number" autocomplete="off" placeholder="Opponent Rating" name="opponent_rating" value="{{ game.opponent_rating }}"></td>
+                        <td ><input class = "input" type="number" autocomplete="off" placeholder="You'r Rating" name="user_rating" value="{{ game.user_rating }}"></td>
+                        <td ><button class = "button1" type="submit">Update</button></td>
+                    </tr>
+                {% endif %}
+                {% endfor %}
+                
+                
+            </tbody>
+        </table>
+        </form>
+    </div>
+{% endblock %}
+
+

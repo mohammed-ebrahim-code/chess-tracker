@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block title %} Add Game {% endblock %}
+{% block main %}
+<div class ="card">
+<form action="/add" method="post">
+
+<select name="color" class = "input"> <option value="white">White</option>  <option value="black">black </option> </select>
+<select name="result" class = "input"> <option value="win">win</option>  <option value="draw">draw </option> <option value="loss">loss </option> </select>
+
+<input class = "input" type="text" autocomplete="off" placeholder="Opening Name" name="opening">
+<input class = "input" type="number" autocomplete="off" placeholder="Opponent Rating" name="opponent_rating">
+<input class = "input" type="number" autocomplete="off" placeholder="You'r Rating" name="user_rating">
+<input class = "input" type="date" autocomplete="off" name="date">
+
+<button class = "button" type="submit">Add Game</button>
+</form>
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% block title %}Progress{% endblock %}
+
+
+{% block main %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const serverData = {{ date_rating | tojson }};
+    const rating = serverData.map(rate => rate.user_rating);
+    const dates = serverData.map(dates => dates.date);
+    elements = document.getElementById('ratingChart')
+    const ctx = elements.getContext('2d');
+    new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: dates,       // your x-axis labels
+        datasets: [{
+            label: 'Your Rating',
+            borderColor:'#895129' ,
+            tension: 0.2,
+            data: rating,      // your actual values
+            // optional styling: borderColor, backgroundColor, etc.
+        }]
+    },
+    options:  {
+        plugins: {
+            title: {
+                display: true,
+                text: 'Rating Progress Over Time',
+                font: {
+                    size: 35,
+                    weight: 'bold'
+                },
+                padding: 10
+            }
+        }
+    }
+
+    });});
+</script>
+<div class ="card2">
+    <canvas id="ratingChart">
+
+
+    </canvas>
+</div>
+
+{% endblock %}
+
+

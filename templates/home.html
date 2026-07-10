@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+{% block title %} Home {% endblock %}
+{% block main %}
+<div class="stats-row">
+    <div class ="card">
+        <h3 class="center-text-head">
+            Overall Win Rate
+        </h3>
+        <p class="center-text">
+            {{ (win_rate * 100) | round(1) }}%
+        </p>
+
+    </div>
+    <div class ="card">
+        <h3 class="center-text-head">
+            Win Rate With White
+        </h3>
+        <p class="center-text">
+            {{ (win_rate_white * 100) | round(1) }}%
+        </p>        
+
+    </div>
+    <div class ="card">
+        <h3 class="center-text-head">
+            Win Rate With Black
+        </h3>
+        <p class="center-text">
+            {{ (win_rate_black * 100) | round(1) }}%
+        </p> 
+
+    </div>
+
+</div>
+<div class ="card1">
+        <h3 class="center-text-head">
+            Win Rate by Opening
+        </h3>
+        <table>
+            <thead>
+                <tr>
+                    <th class ="left">Opening</th>
+                    <th class ="center">Win Rate</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for opening, rate in opening_win_rates.items() %}
+                <tr>
+                    <td class ="left" >{{opening}}</td>
+                    <td class ="center">{{ (rate * 100) | round(1) }}%</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td class ="left">Log 3 Games With The Same Opening </td>
+                    <td class ="center"> To See You'r Win Rate</td>
+                </tr>
+                {% endfor %}
+                
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
