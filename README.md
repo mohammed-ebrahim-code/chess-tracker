@@ -1,7 +1,5 @@
 Chess Tracker
 
-Video Demo: https://youtu.be/DeOITkCidzs
-
 Description:
 
 Chess Tracker is a web application I built as my CS50x final project. It's a personal tool for logging my own chess games and automatically seeing how I'm actually performing — my overall win rate, how I do playing white versus black, and which openings are actually working for me. I play chess casually and wanted something better than just remembering vague impressions of "I think I do better with this opening" — I wanted real numbers pulled from real games I'd logged myself.
