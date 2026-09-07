@@ -1,9 +1,7 @@
 Chess Tracker
-
 A web application for logging chess games and analysing your own performance over time.
 
 Live demo: https://chess-tracker-dzp8.onrender.com/
-
 The live demo runs on Render's free tier, so the first request after a period of inactivity can take up to a minute to wake the server.
 
 Description:
